@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "FlashNews",
-    "slug": "FlashNews",
+    "slug": "Flash-News",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -23,11 +23,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.akash.gandhar.FlashNews"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e872fbda-e512-49b0-9db4-b5eec711ec0c"
+      }
     }
   }
 }
