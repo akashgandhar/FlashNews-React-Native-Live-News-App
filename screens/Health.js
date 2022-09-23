@@ -1,20 +1,15 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
-import SearchBar from './components/SearchBar';
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
+import { StyleSheet, Text, SafeAreaView, FlatList } from 'react-native';
 import Article from './components/Article';
 
-
-
-function SearchScreen (props){
-
-    const [searchText,setSearchText] = useState("");
+function Health () {
     const [articles,setArticles] = useState([]);
-
-    const searchArticles = () => {
-        axios.get('https://newsapi.org/v2/everything?pageSize=100&apiKey=e7bce6c2d8ab49788bc777f76eebf8ab',{
+    const getNews = () => {
+        axios.get('https://newsapi.org/v2/top-headlines?country=in&pageSize=100&category=health&apiKey=e7bce6c2d8ab49788bc777f76eebf8ab',{
             params:{
-                q: searchText
+                country: 'in'
             }
         })
             .then(function (response) {
@@ -50,15 +45,17 @@ function SearchScreen (props){
         setrefreshing(false);
     };
 
-     
- 
-    return (
-            <View style={styles.container}>
-                <SearchBar searchText={searchText} setSearchText={setSearchText} onSubmit={searchArticles}/>
-            <FlatList
+
+    useEffect( () =>{
+        getNews();
+    },[]);
+
+    return(
+        <SafeAreaView style={styles.container}>
+            <FlatList 
                 refreshing={refreshing}
                 onRefresh={_handleRefresh}
-                data={articles}
+                data={articles} 
                 renderItem = {({item}) =>
                 <Article 
                     urlToImage = {item.urlToImage}
@@ -67,24 +64,21 @@ function SearchScreen (props){
                     author = {item.author}
                     publishedAt = {item.publishedAt}
                     sourceName = {item.source.name}
-            />}
+                    url = {item.url}
+                />
+            }
             keyExtractor = {(item)=> item.title}
             />
-            </View>
-    )
-    }
+
+        </SafeAreaView>
+    );
+}
 
 const styles = StyleSheet.create({
     container: {
-        margin: 10
-    },
-    input: {
-        backgroundColor: 'white',
-        padding: 10,
-        borderRadius: 10,
-        color: '#000'
-    }
-  })
 
-export default SearchScreen;
+    }
+})
+
+export default Health;
 

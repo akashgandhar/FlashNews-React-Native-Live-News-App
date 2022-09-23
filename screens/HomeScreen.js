@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import { StyleSheet, Text, SafeAreaView, FlatList } from 'react-native';
+import { StyleSheet, Text, SafeAreaView, FlatList, ScrollView } from 'react-native';
 import Article from './components/Article';
 
 function HomeScreen () {
     const [articles,setArticles] = useState([]);
     const getNews = () => {
-        axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=e7bce6c2d8ab49788bc777f76eebf8ab',{
+        axios.get('https://newsapi.org/v2/top-headlines?country=in&pageSize=100&apiKey=e7bce6c2d8ab49788bc777f76eebf8ab',{
             params:{
                 country: 'in'
             }
@@ -38,13 +38,22 @@ function HomeScreen () {
             });  
     }
 
+    const [refreshing,setrefreshing] = useState(false);
+
+    const _handleRefresh = () => {
+        setrefreshing(true),() => {useEffect( () =>{getNews();})};
+        setrefreshing(false);
+    };
+
     useEffect( () =>{
         getNews();
     },[]);
 
     return(
         <SafeAreaView style={styles.container}>
-            <FlatList 
+            <FlatList
+                refreshing={refreshing}
+                onRefresh={_handleRefresh} 
                 data={articles} 
                 renderItem = {({item}) =>
                 <Article 
@@ -63,6 +72,8 @@ function HomeScreen () {
         </SafeAreaView>
     );
 }
+
+
 
 const styles = StyleSheet.create({
     container: {
