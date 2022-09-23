@@ -27,7 +27,7 @@ function Article(props) {
                 </View>
 
                 <View style={{marginTop: 10}}>
-                    <Text>source: <Text style={styles.source}>{props.sourceName}</Text></Text>
+                    <Text style={styles.source}>{props.sourceName}</Text>
                 </View>
             </View>
         </TouchableOpacity>
@@ -46,12 +46,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         borderRadius: 40,
         shadowOpacity: 0.5,
-        shadowColor: '#000',
+        shadowColor: '#f3b61f',
         shadowOffset: {
             height: 5,
             width: 5
         },
-        backgroundColor : '#fff',
+        backgroundColor : '#f3b61f',
         margin: 15
     },
     image:{

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FlashNews",
-    "slug": "Flash-News",
+    "name": "Flash News",
+    "slug": "flashnews",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#f3b61f"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -23,17 +23,18 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#f3b61f"
       },
-      "package": "com.akash.gandhar.FlashNews"
+      "package": "com.akashgandhar.FlashNews"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "e872fbda-e512-49b0-9db4-b5eec711ec0c"
+        "projectId": "a1e955e5-e2f0-4621-8de1-54b9e3768c79"
       }
     }
+    
   }
 }

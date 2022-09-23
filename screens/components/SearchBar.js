@@ -8,7 +8,7 @@ const SearchBar = (props) => {
     <View style={styles.container}>
         <TextInput
             value={props.searchText}
-            placeholder='Seach'
+            placeholder='Search'
             style={styles.input}
             onChangeText={(text)=>props.setSearchText(text)}
             onSubmitEditing={props.onSubmit}
@@ -25,7 +25,9 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: '#fff',
         padding: 18,
-        borderRadius: 10
+        borderRadius: 10,
+        borderColor: '#f3b61f',
+        borderWidth:2
     }
   });
 
